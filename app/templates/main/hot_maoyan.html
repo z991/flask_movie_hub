@@ -1,0 +1,26 @@
+{% extends 'main/base.html' %}
+
+{% block main %}
+    <table class="table table-bordered table-hover">
+        <tr>
+
+            <th>序号</th>
+
+            <th>电影海报</th>
+            <th>电影名称</th>
+            <th>电影演员</th>
+            <th>电影上映时间</th>
+            <th>电影评分</th>
+        </tr>
+        {% for movie in movieList %}
+        <tr>
+            <td> {{ loop.index }}</td>
+             <td><img src="{{ movie["img"].replace('w.h', '128.180') }}" width="50" height="50"></td>
+            <td>{{ movie.nm }}</td>
+            <td>{{ movie.star }}</td>
+            <td>{{ movie.rt }}</td>
+            <td>{{ movie.sc }}</td>
+        </tr>
+            {% endfor %}
+    </table>
+{% endblock %}

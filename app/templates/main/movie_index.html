@@ -1,0 +1,68 @@
+{% extends 'main/base.html' %}
+
+{% block main %}
+    <table class="table table-bordered table-hover">
+        <tr>
+
+            <th>序号</th>
+            <th>电影海报
+            <th>电影名称</th>
+            <th>电影演员</th>
+            <th>电影上映时间</th>
+            <th>电影评分
+            <a href="?order=score&wd={{ wd }}&pn={{ pn_order_wd.get("pn") }}"><span class="glyphicon glyphicon-arrow-up" aria-hidden="true"></span></a>
+             <a href="?order=-score&wd={{ wd }}&pn={{ pn_order_wd.get("pn") }}"><span class="glyphicon glyphicon-arrow-down" aria-hidden="true"></span></a>
+            </th>
+        </tr>
+        {% for movie in movie_query.items %}
+        <tr>
+            <td> {{ loop.index }}</td>
+             <td><img src="{{ movie.img }}" width="50" height="50"></td>
+            <td>{{ movie.name }}</td>
+            <td>{{ movie.actor }}</td>
+            <td>{{ movie.up_time }}</td>
+            <td>{{ movie.score }}</td>
+        </tr>
+            {% endfor %}
+    </table>
+<nav aria-label="Page navigation" class="text-center">
+    <ul class="pagination">
+        {% if movie_query.has_prev  %}
+        <li>
+            <a href="?order={{ pn_order_wd.get("order") }}&wd={{ wd }}&pn={{ movie_query.prev_num }}" aria-label="Previous">
+                <span aria-hidden="true">&laquo;</span>
+            </a>
+        </li>
+        {% else %}
+        <li class="disabled">
+            <a href="#" aria-label="Previous">
+                <span aria-hidden="true">&laquo;</span>
+            </a>
+        </li>
+        {% endif %}
+        {% for num in movie_query.iter_pages()%}
+            {% if num == movie_query.page %}<!--当前页-->
+        <li class="active"><a href="?pn={{ num }}">{{ num }}</a></li>
+            {% else %}<!--非当前页-->
+        <li><a href="?order={{ pn_order_wd.get("order") }}&wd={{ wd }}&pn={{ num }}">{{ num }}</a></li>
+            {% endif %}
+        {% endfor %}
+
+        {% if movie_query.has_next %}
+        <li>
+            <a href="?order={{ pn_order_wd.get("order") }}&wd={{ wd }}&pn={{ movie_query.next_num }}" aria-label="Next">
+                <span aria-hidden="true">&raquo;</span>
+            </a>
+        </li>
+        {% else %}
+        <li class="disabled">
+            <a href="#" aria-label="Next">
+                <span aria-hidden="true">&raquo;</span>
+            </a>
+        </li>
+
+        {% endif %}
+    </ul>
+
+</nav>
+{% endblock %}

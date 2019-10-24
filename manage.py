@@ -20,7 +20,7 @@ pagination = Posts.query.filter_by(uid=sid).order_by(Posts.timestamp.desc()).pag
 """
 
 app = create_app(os.environ.get('FLASK_CONFIG') or 'default')
-
+application = app.wsgifunc()
 # 添加命令行启动控制
 manager = Manager(app)
 manager.add_command('db', MigrateCommand)

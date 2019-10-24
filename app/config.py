@@ -27,7 +27,7 @@ class Config:
 
 # 开发环境配置
 class DevelopmentConfig(Config):
-    SQLALCHEMY_DATABASE_URI = 'mysql+pymysql://root:1qaz@WSX@52.199.241.236:3306/flask_movie'
+    SQLALCHEMY_DATABASE_URI = 'mysql+pymysql://root:1qaz@WSX@localhost/flask_movie'
     # 这里登陆的是root用户，要填上自己的密码，MySQL的默认端口是3306，填上之前创建的数据库名test
 
 

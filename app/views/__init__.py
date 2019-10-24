@@ -4,7 +4,7 @@ from .main import main
 # 蓝本配置元组
 DEFAULT_BLUEPRINT = (
     # 蓝本 前缀
-    (main, ''),
+    (main, '/'),
 )
 
 

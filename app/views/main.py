@@ -7,11 +7,10 @@ import json
 main = Blueprint('main', __name__)
 
 
-@main.route('/top_100/')
-def top_100():
+@main.route('/top_one/')
+def top_maoyan():
     data = request.args
     request_url = request.base_url
-    print("request_url", request_url)
     page = data.get("pn", 1)
     wd = data.get("wd")
     order = data.get("order")

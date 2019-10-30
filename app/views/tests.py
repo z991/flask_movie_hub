@@ -65,44 +65,6 @@ def main():
     db.session.commit()
     return result
 
-def get_douban():
-    douban_url = " https://movie.douban.com/cinema/nowplaying/beijing/"
-    headers = {
-                "Cookie": '__utma=30149280.845144018.1570629661.1570629661.1570629661.1; __utmb=30149280.1.10.1570629661; __utmc=30149280; __utmz=30149280.1570629661.1.1.utmcsr=(direct)|utmccn=(direct)|utmcmd=(none); __utma=223695111.79442183.1570629671.1570629671.1570629671.1; __utmb=223695111.0.10.1570629671; __utmc=223695111; __utmz=223695111.1570629671.1.1.utmcsr=douban.com|utmccn=(referral)|utmcmd=referral|utmcct=/; _pk_id.100001.4cf6=1ed653dd32c0c999.1570629671.1.1570629779.1570629671.; _pk_ses.100001.4cf6=*; _vwo_uuid_v2=DAAE6541EBDAD5DA4ADB39E3599A93893|c769c8597c09eea48dbdc85c42a5f82a; ap_v=0,6.0; __yadk_uid=PlK3DVeGLarpSmjMSI6YdGYLu8HuEbKb; _pk_ref.100001.4cf6=%5B%22%22%2C%22%22%2C1570629671%2C%22https%3A%2F%2Fwww.douban.com%2F%22%5D; __utmt=1; ll="108288"; bid=UQE-QJdwvlI',
-                "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
-                "Accept-Encoding": "br, gzip, deflate",
-                "Host": "movie.douban.com",
-                "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_6) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/13.0.2 Safari/605.1.15",
-                "Accept-Language": "zh-cn",
-                "Referer": "https://movie.douban.com/",
-                "Connection": "keep-alive"}
-    response = requests.get(url=douban_url, headers=headers).content
-    bod = str(response, encoding="utf-8")
-    return bod
-
-def sousuo_maoyan():
-    headers = {
-        "Cookie": '__utma=30149280.845144018.1570629661.1570629661.1570629661.1; __utmb=30149280.1.10.1570629661; __utmc=30149280; __utmz=30149280.1570629661.1.1.utmcsr=(direct)|utmccn=(direct)|utmcmd=(none); __utma=223695111.79442183.1570629671.1570629671.1570629671.1; __utmb=223695111.0.10.1570629671; __utmc=223695111; __utmz=223695111.1570629671.1.1.utmcsr=douban.com|utmccn=(referral)|utmcmd=referral|utmcct=/; _pk_id.100001.4cf6=1ed653dd32c0c999.1570629671.1.1570629779.1570629671.; _pk_ses.100001.4cf6=*; _vwo_uuid_v2=DAAE6541EBDAD5DA4ADB39E3599A93893|c769c8597c09eea48dbdc85c42a5f82a; ap_v=0,6.0; __yadk_uid=PlK3DVeGLarpSmjMSI6YdGYLu8HuEbKb; _pk_ref.100001.4cf6=%5B%22%22%2C%22%22%2C1570629671%2C%22https%3A%2F%2Fwww.douban.com%2F%22%5D; __utmt=1; ll="108288"; bid=UQE-QJdwvlI',
-        "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
-        "Accept-Encoding": "br, gzip, deflate",
-        "Host": "movie.douban.com",
-        "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_6) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/13.0.2 Safari/605.1.15",
-        "Accept-Language": "zh-cn",
-        "Referer": "https://movie.douban.com/",
-        "Connection": "keep-alive"}
-
-    he = {"Accept": "application/json, text/javascript, */*; q=0.01",
-"Referer": "https://m.maoyan.com/search?searchtype=movie&$from=canary",
-"Sec-Fetch-Mode": "cors",
-"User-Agent": "Mozilla/5.0 (Linux; Android 6.0; Nexus 5 Build/MRA58N) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/77.0.3865.120 Mobile Safari/537.36",
-"X-Requested-With": "XMLHttpRequest"}
-
-    url = "https://m.maoyan.com/ajax/search?kw=肖申&cityId=1&stype=-1"
-    content = requests.get(url=url, headers=he).content
-    import json
-    bod = str(content, encoding="utf-8")
-    # bod = json.loads(bod)
-    print(bod)
 
 if __name__ == "__main__":
     dou = main()
